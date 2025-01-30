@@ -1,0 +1,136 @@
+<!-- <div class="navbar">
+  <div class="logo">
+    <img src="/home/sanchit/intern_work/signup-app/logo.png" alt="Logo">
+  </div>
+  <div class="nav-links">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">About</a>
+    <a href="#" class="nav-link">Contact</a>
+    <a routerLInk="/login" class="nav-link">Login</a>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="form-box">
+    <h1 class="title">Sign Up</h1>
+    <form (ngSubmit)="onUserSave()" [formGroup]="userForm">
+      <div class="form-group">
+        <!-- First Name -->
+        <div>
+          <input
+            type="text"
+            placeholder="First Name"
+            class="input"
+            formControlName="firstName"
+          />
+          <p class="error" *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.dirty">
+            {{
+              userForm.get('firstName')?.hasError('required')
+                ? 'First Name is required.'
+                : 'Only alphabets are allowed.'
+            }}
+          </p>
+        </div>
+
+        <!-- Last Name -->
+        <div>
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="input"
+            formControlName="lastName"
+          />
+          <p class="error" *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.dirty">
+            {{
+              userForm.get('lastName')?.hasError('required')
+                ? 'Last Name is required.'
+                : 'Only alphabets are allowed.'
+            }}
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <input
+            type="email"
+            placeholder="Email"
+            class="input"
+            formControlName="email"
+          />
+          <p class="error" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.dirty">
+            {{
+              userForm.get('email')?.hasError('required')
+                ? 'Email must end with @docquity.com.'
+                : userForm.get('email')?.hasError('email')
+                ? 'Email must end with @docquity.com.'
+                : 'Email must end with @docquity.com.'
+            }}
+          </p>
+
+          <p class="error" *ngIf="emailError">
+            {{ emailError }}
+          </p>
+          
+        </div>
+
+        <!-- Mobile -->
+        <div>
+          <input
+            type="text"
+            placeholder="Mobile"
+            class="input"
+            formControlName="mobile"
+          />
+          <p class="error" *ngIf="userForm.get('mobile')?.invalid && userForm.get('mobile')?.dirty">
+            {{
+              userForm.get('mobile')?.hasError('required')
+                ? 'Mobile number is required.'
+                : 'Mobile number must be exactly 10 digits.'
+            }}
+          </p>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            class="input"
+            formControlName="password"
+          />
+          <p class="error" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.dirty">
+            {{
+              userForm.get('password')?.hasError('required')
+                ? 'Password is required.'
+                : 'Must include uppercase, lowercase, number, special character, and min 8 chars.'
+            }}
+          </p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            class="input"
+            formControlName="confirmPassword"
+          />
+          <p
+            class="error"
+            *ngIf="userForm.get('confirmPassword')?.dirty &&
+              (userForm.get('confirmPassword')?.invalid || userForm.hasError('passwordsMismatch'))"
+          >
+            {{
+              userForm.get('confirmPassword')?.hasError('required')
+                ? 'Confirm Password is required.'
+                : 'Password and Confirm Password must match.'
+            }}
+          </p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn" [disabled]="userForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

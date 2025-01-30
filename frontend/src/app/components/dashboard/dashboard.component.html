@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+    <h1 class="heading">User Dashboard</h1>
+  
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Mobile Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.mobile_number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="logout-container">
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+  

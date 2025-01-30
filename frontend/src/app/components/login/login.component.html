@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="form-box">
+    <h1 class="title">Login</h1>
+    <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+      <div class="form-group">
+        <!-- Email -->
+        <div>
+          <input
+            type="email"
+            placeholder="Email"
+            class="input"
+            formControlName="email"
+          />
+          <p class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.dirty">
+            {{ loginForm.get('email')?.hasError('required') ? 'Email is required.' : 'Please enter a valid email.' }}
+          </p>
+          <p class="error" *ngIf="emailError">{{ emailError }}</p>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            class="input"
+            formControlName="password"
+          />
+          <p class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty">
+            {{ loginForm.get('password')?.hasError('required') ? 'Password is required.' : 'Password did not match.' }}
+          </p>
+          <p class="error" *ngIf="passwordError">{{ passwordError }}</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
