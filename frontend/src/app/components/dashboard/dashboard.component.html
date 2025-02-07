@@ -21,9 +21,13 @@
         </tbody>
       </table>
     </div>
-  
+
+    <p class="error" *ngIf="showError">{{ showError }}</p>
+    
     <div class="logout-container">
       <button class="logout-btn" (click)="logout()">Logout</button>
     </div>
+
+    
   </div>
   

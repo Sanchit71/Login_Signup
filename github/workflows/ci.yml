@@ -1,0 +1,59 @@
+name: CI Pipeline for Angular & NestJS
+
+on:
+  push:
+    branches:
+      - intern_local
+  pull_request:
+    branches:
+      - intern_local
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js (adjust version if needed)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  # You can adjust this based on your Node.js version
+
+      # 3. Install dependencies for both frontend and backend
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      # 4. Run Tests for both frontend and backend
+      - name: Run Backend Tests
+        run: |
+          cd backend
+          npm run test  # Ensure you have a 'test' script in backend/package.json
+
+      - name: Run Frontend Tests
+        run: |
+          cd frontend
+          npm run test -- --watch=false --browsers=ChromeHeadless
+
+      # 5. Build both projects
+      - name: Build Backend
+        run: |
+          cd backend
+          npm run build  # Ensure you have a 'build' script in backend/package.json
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build # Angular production build
+
+      # 6. Optionally, you can deploy here if needed

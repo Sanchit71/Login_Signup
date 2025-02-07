@@ -3,32 +3,31 @@ import { AuthService } from './auth.service';
 import { SignupDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
 import { get } from 'http';
-import { AuthGuard } from 'src/guards/auth/auth.guard'
+import { AuthGuard } from '../guards/auth/auth.guard';
 
 @Controller('auth')
 export class AuthController {
+  constructor(private readonly authService: AuthService) {}
 
-    constructor(private readonly authService: AuthService) { }
+  @Post('signup')
+  async signup(@Body() signupDto: SignupDto) {
+    return this.authService.signup(signupDto);
+  }
 
-    @Post('signup')
-    async signup(@Body() signupDto: SignupDto) {
-        return this.authService.signup(signupDto)
-    }
+  @Post('login')
+  async login(@Body() loginDto: LoginDto) {
+    return this.authService.login(loginDto);
+  }
 
-    @Post('login')
-    async login(@Body() loginDto: LoginDto) {
-        return this.authService.login(loginDto)
-    }
+  @UseGuards(AuthGuard)
+  @Get('dashboard')
+  async dashboard() {
+    return this.authService.dashboard();
+  }
 
-    @UseGuards(AuthGuard)
-    @Get('dashboard')
-    async dashboard() {
-        return this.authService.dashboard()
-    }
-
-    @UseGuards(AuthGuard)
-    @Get('verify-token')
-    async verifyToken() {
-        return this.authService.verifyToken()
-    }
+  @UseGuards(AuthGuard)
+  @Get('verify-token')
+  async verifyToken() {
+    return this.authService.verifyToken();
+  }
 }

@@ -15,10 +15,11 @@ import { first } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule, NgIf, RouterLink],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
+
 export class SignupComponent {
   constructor(private http: HttpClient, private router: Router) { }
 

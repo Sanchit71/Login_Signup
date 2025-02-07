@@ -27,7 +27,7 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
   ngOnInit(): void {
     const token = localStorage.getItem('access_token');
 
@@ -53,7 +53,7 @@ export class LoginComponent {
           }
         });
 
-    } 
+    }
   }
 
   onLogin() {
@@ -62,23 +62,23 @@ export class LoginComponent {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
-  
+
       console.log(formData);
-  
+
       // Clear existing error messages
       this.emailError = '';
       this.passwordError = '';
-  
+
       this.http.post("http://localhost:3000/auth/login", formData).subscribe({
         next: (res: any) => {
           console.log("Login successful", res);
-  
+
           // Store the access token in sessionStorage
           if (res.access_token) {
             localStorage.setItem('access_token', res.access_token);
             console.log('Token stored in sessionStorage');
           }
-  
+
           // Redirect to the dashboard after successful login
           this.router.navigate(['/dashboard']);
         },
@@ -94,11 +94,11 @@ export class LoginComponent {
             this.emailError = 'An unexpected error occurred. Please try again later.';
           }
         }
-        
+
       });
     } else {
       console.log('Form is invalid');
       this.emailError = 'Please fill in all required fields correctly.';
     }
-  }  
+  }
 }

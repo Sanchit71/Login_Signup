@@ -1,42 +1,53 @@
 /* Navbar */
+
+
 .navbar {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    color: #ffffff; /* White text */
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center; /* Align logo vertically */
-  }
-  
-  .logo img {
-    height: 50px; /* Set the logo size */
-    width: auto; /* Maintain aspect ratio */
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 20px; /* Spacing between links */
-  }
-  
-  .nav-link {
-    color: #ffffff; /* White text for links */
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .nav-link:hover {
-    color: #4CAF50; /* Green hover effect */
-  }
-  
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Transparent black background */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  color: #ffffff;
+  /* White text */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add depth with shadow */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  /* Align logo vertically */
+}
+
+.logo img {
+  height: 50px;
+  /* Set the logo size */
+  width: auto;
+  /* Maintain aspect ratio */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  /* Spacing between links */
+}
+
+.nav-link {
+  color: #ffffff;
+  /* White text for links */
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #4CAF50;
+  /* Green hover effect */
+}
+
