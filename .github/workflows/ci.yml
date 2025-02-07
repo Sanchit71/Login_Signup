@@ -32,7 +32,7 @@ jobs:
       - name: Install Frontend Dependencies
         run: |
           cd frontend
-          npm install
+          npm install --force
 
       # 4. Run Tests for both frontend and backend
       - name: Run Backend Tests
